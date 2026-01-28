@@ -1,5 +1,3 @@
-const base = "https://raw.githubusercontent.com/attendance1978-wq/hidden/main/src/libs/";
-
 const video = document.getElementById("video");
 const mp4source = document.getElementById("mp4source");
 const oggsource = document.getElementById("oggsource");
@@ -15,8 +13,8 @@ const playlistDiv = document.getElementById("playlist");
 let playlist = [];
 let index = 0;
 
-// Load playlist
-fetch(base + "json/playlist.json")
+// Load playlist from JSON (relative to GitHub Pages)
+fetch("src/libs/json/playlist.json")
   .then(res => res.json())
   .then(data => {
     playlist = data;
@@ -25,12 +23,12 @@ fetch(base + "json/playlist.json")
   })
   .catch(err => console.error("Failed to load playlist:", err));
 
-// Playlist thumbnails
+// Create playlist thumbnails
 function createThumbnails() {
   playlist.forEach((v,i)=>{
     const thumb = document.createElement("div");
     thumb.classList.add("thumb");
-    thumb.innerHTML = `<img src="${base + v.poster}"><div>${v.title}</div>`;
+    thumb.innerHTML = `<img src="src/libs/${v.poster}"><div>${v.title}</div>`;
     thumb.addEventListener("click",()=>{
       index=i;
       loadVideo(index);
@@ -51,9 +49,9 @@ function updateActiveThumb(){
 function loadVideo(i){
   const v = playlist[i];
   titleDiv.textContent = v.title;
-  mp4source.src = base + v.mp4;
-  oggsource.src = base + v.ogg;
-  video.poster = base + v.poster;
+  mp4source.src = "src/libs/" + v.mp4;
+  oggsource.src = "src/libs/" + v.ogg;
+  video.poster = "src/libs/" + v.poster;
   video.load();
   playBtn.textContent = "▶";
   updateActiveThumb();
