@@ -9,6 +9,7 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
 #player {
   width: 640px;
   max-width: 95%;
@@ -17,10 +18,12 @@ body {
   overflow: hidden;
   position: relative;
 }
+
 video {
   width: 100%;
   display: block;
 }
+
 .controls {
   display: flex;
   align-items: center;
@@ -33,7 +36,9 @@ video {
   box-sizing: border-box;
   transition: background 0.3s;
 }
+
 .controls:hover { background: rgba(0,0,0,0.9); }
+
 button {
   background: none;
   border: none;
@@ -42,7 +47,9 @@ button {
   cursor: pointer;
   transition: color 0.2s;
 }
+
 button:hover { color: #ff0000; }
+
 #progress-container {
   flex: 1;
   height: 5px;
@@ -53,27 +60,32 @@ button:hover { color: #ff0000; }
   overflow: hidden;
   position: relative;
 }
+
 #progress {
   width: 0%;
   height: 100%;
   background: #ff0000;
   transition: width 0.1s linear;
 }
+
 #time {
   font-size: 14px;
   margin-left: 8px;
 }
+
 #title {
   text-align: center;
   margin-bottom: 10px;
   font-size: 20px;
 }
+
 #playlist {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 15px;
 }
+
 .thumb {
   width: 120px;
   margin: 5px;
@@ -81,15 +93,18 @@ button:hover { color: #ff0000; }
   text-align: center;
   font-size: 14px;
 }
+
 .thumb img {
   width: 100%;
   border-radius: 6px;
   border: 2px solid transparent;
   transition: border 0.2s;
 }
+
 .thumb img:hover {
   border: 2px solid #ff0000;
 }
+
 .thumb.active img {
   border: 2px solid #ff0000;
 }
