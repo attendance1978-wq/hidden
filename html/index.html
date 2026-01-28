@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YouTube-style Player</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="title"></div>
+
+<div id="player">
+  <video id="video" poster="" playsinline>
+    <source id="mp4source" src="" type="video/mp4">
+    <source id="oggsource" src="" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="controls">
+    <button id="play">▶</button>
+    <div id="progress-container">
+      <div id="progress"></div>
+    </div>
+    <div id="time">0:00 / 0:00</div>
+    <input type="range" id="volume" min="0" max="1" step="0.05">
+    <button id="fullscreen">⛶</button>
+  </div>
+</div>
+
+<div id="playlist"></div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
