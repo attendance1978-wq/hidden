@@ -1,4 +1,4 @@
-const base = "https://raw.githubusercontent.com/attendance1978-wq/hidden/main/";
+const base = "https://raw.githubusercontent.com/attendance1978-wq/hidden/main/src/libs/";
 
 const video = document.getElementById("video");
 const mp4source = document.getElementById("mp4source");
@@ -15,8 +15,8 @@ const playlistDiv = document.getElementById("playlist");
 let playlist = [];
 let index = 0;
 
-// Load playlist JSON
-fetch(base + "src/libs/json/playlist.json")
+// Load playlist
+fetch(base + "json/playlist.json")
   .then(res => res.json())
   .then(data => {
     playlist = data;
@@ -25,7 +25,7 @@ fetch(base + "src/libs/json/playlist.json")
   })
   .catch(err => console.error("Failed to load playlist:", err));
 
-// Create thumbnails
+// Playlist thumbnails
 function createThumbnails() {
   playlist.forEach((v,i)=>{
     const thumb = document.createElement("div");
@@ -59,7 +59,7 @@ function loadVideo(i){
   updateActiveThumb();
 }
 
-// Play/pause toggle
+// Play/pause
 playBtn.addEventListener("click", ()=>{
   if(video.paused){
     video.play();
@@ -74,19 +74,17 @@ playBtn.addEventListener("click", ()=>{
 video.addEventListener("timeupdate", ()=>{
   const percent = (video.currentTime/video.duration)*100;
   progress.style.width = percent + "%";
-  const c = formatTime(video.currentTime);
-  const d = formatTime(video.duration);
-  timeDiv.textContent = `${c} / ${d}`;
+  timeDiv.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
 });
 
-// Format time MM:SS
+// Format MM:SS
 function formatTime(sec){
   const m = Math.floor(sec/60);
   const s = Math.floor(sec%60);
   return `${m}:${s<10?"0"+s:s}`;
 }
 
-// Click progress bar to seek
+// Click progress
 progressContainer.addEventListener("click", e=>{
   const rect = progressContainer.getBoundingClientRect();
   const pos = (e.clientX - rect.left)/rect.width;
